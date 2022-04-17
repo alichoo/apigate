@@ -1,0 +1,50 @@
+import { useState } from "react";
+
+
+
+function App() {
+  const [inputs, setInputs] = useState({});
+
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs(values => ({...values, [name]: value}))
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert(inputs);
+  }
+  
+  return (
+    <div >
+    <h1>LOGIN</h1>
+    
+    <form onSubmit={handleSubmit}>
+      <label> Nom:
+      <input 
+        type="text" 
+        name="username" 
+        value={inputs.username || ""} 
+        onChange={handleChange}
+      />
+      </label>
+      <br></br>
+      <br></br>
+      <label> mot de passe :
+        <input 
+          type="text" 
+          name="motdepass" 
+          value={inputs.motdepass || ""} 
+          onChange={handleChange}
+        />
+        </label>
+        <br></br>
+        <br></br>
+        <input type="submit" />
+    </form>
+    </div>
+  )
+}
+
+export default App;
